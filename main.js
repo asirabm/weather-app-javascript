@@ -2,12 +2,25 @@ import './style.css'
 import weather from './weather'
 import { ICON_MAP } from './icon'
 
+navigator.geolocation.getCurrentPosition(positionSuccess, positionError)
 
-weather(7.65,80.32,Intl.DateTimeFormat().resolvedOptions().timeZone).then(({current,daily,hourly})=>{
-  renderCurrentWeather(current)
-  renderDailyWeather(daily)
-  renderHourlyWeather(hourly)
-})
+function positionSuccess({ coords }) {
+  weather(coords.latitude,coords.longitude,Intl.DateTimeFormat().resolvedOptions().timeZone).then(({current,daily,hourly})=>{
+    renderCurrentWeather(current)
+    renderDailyWeather(daily)
+    renderHourlyWeather(hourly)
+    document.body.classList.remove("blured")
+  })
+}
+function positionError() {
+  alert(
+    "There was an error getting your location. Please allow us to use your location and refresh the page."
+  )
+}
+
+
+
+
 function setValue(selector,value,{parent=document}={}){
  parent.querySelector(`[data-${selector}]`).textContent=value
 }

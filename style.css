@@ -89,3 +89,7 @@ body{
 .hour-row > td{
   padding: 0.25rem 0.5rem;
 }
+.blured{
+  filter: blur(3px);
+  overflow: hidden;
+}
