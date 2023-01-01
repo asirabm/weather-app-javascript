@@ -13,6 +13,7 @@ return await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&l
 }
 
 function parseCurrentWeather({current_weather,daily}){
+
    // console.log(current_weather)
   const {
    temperature:currentTemp,

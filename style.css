@@ -93,3 +93,6 @@ body{
   filter: blur(3px);
   overflow: hidden;
 }
+.place{
+  margin: 0.5rem;
+}
